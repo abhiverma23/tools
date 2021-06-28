@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import NavBar from './common/navbar/NavBar';
+import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
+import Home from './pages/home/Home';
+import PasswordGenerator from './pages/password-generator/PasswordGenerator';
+import NotFound from './pages/NotFound';
+import About from './pages/about/About';
+import Footer from './common/footer/Footer';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className='container-lg'>
+        <NavBar />
+
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route
+            exact
+            path='/passoword-generator'
+            component={PasswordGenerator}
+          />
+          <Route exact path='/about' component={About} />
+          <Route component={NotFound} />
+        </Switch>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
