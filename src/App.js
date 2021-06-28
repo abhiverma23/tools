@@ -11,7 +11,6 @@ function App() {
     <Router>
       <div className='container-lg'>
         <NavBar />
-
         <Switch>
           <Route exact path='/' component={Home} />
           <Route
