@@ -1,3 +1,10 @@
+ErrorDocument 400 http://vabhishek.com/error?err=400&landTo=tools
+ErrorDocument 401 http://vabhishek.com/error?err=401&landTo=tools
+ErrorDocument 403 http://vabhishek.com/error?err=403&landTo=tools
+ErrorDocument 404 http://vabhishek.com/error?landTo=tools
+ErrorDocument 500 http://vabhishek.com/error?err=500&landTo=tools
+ErrorDocument 503 http://vabhishek.com/error?err=503&landTo=tools
+
 <IfModule mod_rewrite.c>
 
   RewriteEngine On

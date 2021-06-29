@@ -4,8 +4,7 @@ import RoadMapCard from './RoadMapCard';
 function Home() {
   return (
     <div>
-      <p>Hello World!... This is home page</p>
-      <p>We are working towards creating tools at the earliest.</p>
+      <br />
       <h2>Updates and new releases</h2>
       <div className='row row-cols-1 row-cols-md-3 g-4'>
         <RoadMapCard title='🚀 First generation!!!' date='29 June 2021'>
