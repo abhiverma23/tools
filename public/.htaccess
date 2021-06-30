@@ -16,3 +16,6 @@ ErrorDocument 503 http://vabhishek.com/error?err=503&landTo=tools
   RewriteRule . /index.html [L]
 
 </IfModule>
+
+
+#redirectMatch 301 ^(.*)$ http://tools.vabhishek.com

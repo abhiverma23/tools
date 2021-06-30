@@ -7,8 +7,8 @@ function PasswordGenerator() {
     allSmall = 'abcdefghijklmnopqrstuvwxyz',
     specialChar = "~!@#$%^&*()_+`{}|[]:;'<>?,./",
     numbers = '1234567890',
-    SHOW_ALERT_CLASSNAME = 'fade show',
-    HIDE_ALERT_CLASSNAME = 'fade hide',
+    SHOW_ALERT_CLASSNAME = 'show',
+    HIDE_ALERT_CLASSNAME = 'hide',
     GREEN_BORDER = { borderColor: '#198753', borderWidth: '2px' };
 
   const [passwordLength, setPasswordLength] = useState(maxLength),
@@ -149,13 +149,10 @@ function PasswordGenerator() {
       </form>
       <div className='position-fixed bottom-0 end-0 p-3' style={{ zIndex: 11 }}>
         <div
-          id='liveToast'
           className={
-            'toast ' + (showAlert ? SHOW_ALERT_CLASSNAME : HIDE_ALERT_CLASSNAME)
+            'toast fade ' +
+            (showAlert ? SHOW_ALERT_CLASSNAME : HIDE_ALERT_CLASSNAME)
           }
-          role='alert'
-          aria-live='assertive'
-          aria-atomic='true'
         >
           <div className='toast-header'>
             <strong className='me-auto'>✅ Password Generator</strong>
@@ -163,8 +160,6 @@ function PasswordGenerator() {
             <button
               type='button'
               className='btn-close'
-              data-bs-dismiss='toast'
-              aria-label='Close'
               onClick={closeAlertWindow}
             ></button>
           </div>
