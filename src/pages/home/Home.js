@@ -7,6 +7,13 @@ function Home() {
       <br />
       <h2>Updates and new releases</h2>
       <div className='row row-cols-1 row-cols-md-3 g-4'>
+        <RoadMapCard
+          title='🔧 Improvements in password generator'
+          date='30 June 2021'
+        >
+          Included a nice alert when password is copied after clicking on text
+          field.
+        </RoadMapCard>
         <RoadMapCard title='🚀 First generation!!!' date='29 June 2021'>
           Completed the first iteration of the random password generator. It's
           not that flexible yet but it works and does what's required.

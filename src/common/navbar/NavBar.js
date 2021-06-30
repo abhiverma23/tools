@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 function NavBar() {
   //const color = process.env.REACT_APP_THEME_PRIMARY_COLOR;
@@ -56,10 +55,5 @@ function NavLink({ path, name }) {
     </li>
   );
 }
-
-NavLink.propTypes = {
-  path: PropTypes.object.isRequired,
-  name: PropTypes.object.isRequired,
-};
 
 export default NavBar;

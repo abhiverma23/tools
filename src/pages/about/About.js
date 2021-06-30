@@ -10,10 +10,17 @@ function About() {
         while you are doing web development.
       </p>
       <p className='text-start'>
-        This website is completely based on ReactJS and doesn't have any backend
-        service with which it can communicate. All the processing is done on the
-        browser end and possibly stores a few required configurations in browser
-        local storage to provide a better user experience.{' '}
+        This website is completely based on{' '}
+        <img
+          src={process.env.PUBLIC_URL + '/logo192.png'}
+          width='20'
+          height='20'
+          alt='no-img'
+        />{' '}
+        React and doesn't have any backend service with which it can
+        communicate. All the processing is done on the browser end and possibly
+        stores a few required configurations in browser local storage to provide
+        a better user experience.{' '}
         <span className='text-muted fst-italic'>
           (Currently, nothing will be stored in local storage)
         </span>
