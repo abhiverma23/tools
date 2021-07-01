@@ -32,6 +32,7 @@ function NavBar() {
           <ul className='navbar-nav ms-auto mb-2 mb-lg-0'>
             <NavLink path='/' name='Home' />
             <NavLink path='/passoword-generator' name='Password Generator' />
+            <NavLink path='/base64' name='Base64 Encode/Decode' />
             <NavLink path='/about' name='About' />
           </ul>
         </div>

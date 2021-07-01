@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function RoadMapCard(props) {
-  console.log(props);
   const { title = '-NA-', date = '-NA-', children = '-NA-' } = props;
   return (
     <div className='col'>
@@ -20,7 +19,7 @@ function RoadMapCard(props) {
 RoadMapCard.propTypes = {
   title: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-  children: PropTypes.object.isRequired,
+  children: PropTypes.string.isRequired,
 };
 
 export default RoadMapCard;

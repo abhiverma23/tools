@@ -5,6 +5,7 @@ import PasswordGenerator from './pages/password-generator/PasswordGenerator';
 import NotFound from './pages/NotFound';
 import About from './pages/about/About';
 import Footer from './common/footer/Footer';
+import Base64EncodeDecoder from './pages/encoder-decoder/base64/Base64EncodeDecoder';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             path='/passoword-generator'
             component={PasswordGenerator}
           />
+          <Route exact path='/base64' component={Base64EncodeDecoder} />
           <Route exact path='/about' component={About} />
           <Route component={NotFound} />
         </Switch>

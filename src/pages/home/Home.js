@@ -7,6 +7,11 @@ function Home() {
       <br />
       <h2>Updates and new releases</h2>
       <div className='row row-cols-1 row-cols-md-3 g-4'>
+        <RoadMapCard title='🪜 First step toward Base64' date='1 June 2021'>
+          Created a first working version of new Base64 encoder and decoder tool
+          🅱️6️⃣4️⃣, with paste functionality which will works best in chrome based
+          browser😅.
+        </RoadMapCard>
         <RoadMapCard
           title='🔧 Improvements in password generator'
           date='30 June 2021'
