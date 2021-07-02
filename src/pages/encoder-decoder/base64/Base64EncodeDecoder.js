@@ -1,18 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function Base64EncodeDecoder() {
   const SHOW_ALERT_CLASSNAME = 'show',
     HIDE_ALERT_CLASSNAME = 'hide',
     PASTE_ERR_MSG = 'Got error while pasting value.',
     PASTE_SUC_MSG = 'Pasted clipboard content.',
+    PASTE_NOT_SUPPORTED_MSG =
+      'Pasting from clipboard is not supported in your browser',
     COPY_SUC_MSG = 'Content is copied to clipboard.',
+    COPY_NOT_SUPPORTED_MSG =
+      'Cpoiying content from clipboard is not supported in your browser',
     CLEAR_SUC_MSG = 'Cleared content in text box.',
     DECODE_SUC_MSG = 'Decoded Base64 to plain text.',
     ENCODE_SUC_MSG = 'Encoded plain text to base64';
+
   const [plainText, setPlainText] = useState(''),
     [base64Text, setBase64Text] = useState(''),
     [showAlert, setShowAlert] = useState(false),
-    [alertMessage, setAlertMessage] = useState('Alert Message Goes Here....');
+    [alertMessage, setAlertMessage] = useState('Alert Message Goes Here....'),
+    [isPasteSupported, setPasteSupported] = useState(false);
 
   const encodeToBase64 = () => {
     setBase64Text(btoa(plainText));
@@ -25,8 +31,12 @@ export default function Base64EncodeDecoder() {
   };
 
   const copyValue = (value) => {
-    navigator.clipboard.writeText(value);
-    showAlertWithMsg(COPY_SUC_MSG);
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(value);
+      showAlertWithMsg(COPY_SUC_MSG);
+    } else {
+      showAlertWithMsg(COPY_NOT_SUPPORTED_MSG);
+    }
   };
 
   const showAlertWithMsg = (msg) => {
@@ -39,19 +49,29 @@ export default function Base64EncodeDecoder() {
   };
 
   const pasteValue = (setter) => {
-    navigator.clipboard.readText().then(
-      (res) => {
-        setter(res);
-        showAlertWithMsg(PASTE_SUC_MSG);
-      },
-      (res) => showAlertWithMsg(PASTE_ERR_MSG + res)
-    );
+    if (navigator.clipboard && navigator.clipboard.readText) {
+      navigator.clipboard.readText().then(
+        (res) => {
+          setter(res);
+          showAlertWithMsg(PASTE_SUC_MSG);
+        },
+        (res) => showAlertWithMsg(PASTE_ERR_MSG + res)
+      );
+    } else {
+      showAlertWithMsg(PASTE_NOT_SUPPORTED_MSG);
+    }
   };
 
   const clearValue = (setter) => {
     setter('');
     showAlertWithMsg(CLEAR_SUC_MSG);
   };
+
+  useEffect(() => {
+    if (navigator.clipboard && navigator.clipboard.readText) {
+      setPasteSupported(true);
+    }
+  }, []);
 
   return (
     <div>
@@ -67,13 +87,15 @@ export default function Base64EncodeDecoder() {
           >
             📄 Copy
           </button>{' '}
-          <button
-            type='submit'
-            className='btn btn-light'
-            onClick={() => pasteValue(setPlainText)}
-          >
-            📝 Paste
-          </button>
+          {isPasteSupported && (
+            <button
+              type='submit'
+              className='btn btn-light'
+              onClick={() => pasteValue(setPlainText)}
+            >
+              📝 Paste
+            </button>
+          )}
         </div>
         <div className='col-auto'>
           <button
@@ -132,13 +154,15 @@ export default function Base64EncodeDecoder() {
           >
             📄 Copy
           </button>{' '}
-          <button
-            type='submit'
-            className='btn btn-light'
-            onClick={() => pasteValue(setBase64Text)}
-          >
-            📝 Paste
-          </button>
+          {isPasteSupported && (
+            <button
+              type='submit'
+              className='btn btn-light'
+              onClick={() => pasteValue(setBase64Text)}
+            >
+              📝 Paste
+            </button>
+          )}
         </div>
         <div className='col-auto'>
           <button
