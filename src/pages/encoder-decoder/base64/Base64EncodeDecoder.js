@@ -59,7 +59,7 @@ export default function Base64EncodeDecoder() {
       <h3>Base64 Encoder and Decoder</h3>
       <br />
       <div className='row justify-content-between'>
-        <div className='col col-4'>
+        <div className='col-auto'>
           <button
             type='submit'
             className='btn btn-light'
@@ -75,7 +75,7 @@ export default function Base64EncodeDecoder() {
             📝 Paste
           </button>
         </div>
-        <div className='col col-2'>
+        <div className='col-auto'>
           <button
             type='submit'
             className='btn btn-light'
@@ -124,7 +124,7 @@ export default function Base64EncodeDecoder() {
         <label htmlFor='base64Text'>Encoded Base64 Text</label>
       </div>
       <div className='row justify-content-between'>
-        <div className='col col-4'>
+        <div className='col-auto'>
           <button
             type='submit'
             className='btn btn-light'
@@ -140,7 +140,7 @@ export default function Base64EncodeDecoder() {
             📝 Paste
           </button>
         </div>
-        <div className='col col-2'>
+        <div className='col-auto'>
           <button
             type='submit'
             className='btn btn-light'
