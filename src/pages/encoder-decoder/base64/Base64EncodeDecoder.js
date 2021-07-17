@@ -12,21 +12,22 @@ export default function Base64EncodeDecoder() {
       'Cpoiying content from clipboard is not supported in your browser',
     CLEAR_SUC_MSG = 'Cleared content in text box.',
     DECODE_SUC_MSG = 'Decoded Base64 to plain text.',
-    ENCODE_SUC_MSG = 'Encoded plain text to base64';
+    ENCODE_SUC_MSG = 'Encoded plain text to base64',
+    BUTTON_CSS_CLASS = 'btn btn-outline-secondary';
 
-  const [plainText, setPlainText] = useState(''),
-    [base64Text, setBase64Text] = useState(''),
+  const [sourceText, setSourceText] = useState(''),
+    [targetText, setTargetText] = useState(''),
     [showAlert, setShowAlert] = useState(false),
     [alertMessage, setAlertMessage] = useState('Alert Message Goes Here....'),
     [isPasteSupported, setPasteSupported] = useState(false);
 
   const encodeToBase64 = () => {
-    setBase64Text(btoa(plainText));
+    setTargetText(btoa(sourceText));
     showAlertWithMsg(ENCODE_SUC_MSG);
   };
 
   const decodeFromBase64 = () => {
-    setPlainText(atob(base64Text));
+    setTargetText(atob(sourceText));
     showAlertWithMsg(DECODE_SUC_MSG);
   };
 
@@ -53,7 +54,7 @@ export default function Base64EncodeDecoder() {
       navigator.clipboard.readText().then(
         (res) => {
           setter(res);
-          showAlertWithMsg(PASTE_SUC_MSG);
+          //showAlertWithMsg(PASTE_SUC_MSG);
         },
         (res) => showAlertWithMsg(PASTE_ERR_MSG + res)
       );
@@ -64,7 +65,7 @@ export default function Base64EncodeDecoder() {
 
   const clearValue = (setter) => {
     setter('');
-    showAlertWithMsg(CLEAR_SUC_MSG);
+    //showAlertWithMsg(CLEAR_SUC_MSG);
   };
 
   useEffect(() => {
@@ -81,17 +82,17 @@ export default function Base64EncodeDecoder() {
       <div className='row justify-content-between'>
         <div className='col-auto'>
           <button
-            type='submit'
-            className='btn btn-light'
-            onClick={() => copyValue(plainText)}
+            type='button'
+            className={BUTTON_CSS_CLASS}
+            onClick={() => copyValue(sourceText)}
           >
             📄 Copy
           </button>{' '}
           {isPasteSupported && (
             <button
-              type='submit'
-              className='btn btn-light'
-              onClick={() => pasteValue(setPlainText)}
+              type='button'
+              className={BUTTON_CSS_CLASS}
+              onClick={() => pasteValue(setSourceText)}
             >
               📝 Paste
             </button>
@@ -99,9 +100,9 @@ export default function Base64EncodeDecoder() {
         </div>
         <div className='col-auto'>
           <button
-            type='submit'
-            className='btn btn-light'
-            onClick={() => clearValue(setPlainText)}
+            type='button'
+            className={BUTTON_CSS_CLASS}
+            onClick={() => clearValue(setSourceText)}
           >
             🗑 Clear
           </button>
@@ -112,26 +113,27 @@ export default function Base64EncodeDecoder() {
           className='form-control'
           placeholder='Leave a comment here'
           style={{ height: '200px' }}
-          id='plainText'
-          value={plainText}
-          onChange={(event) => setPlainText(event.target.value)}
+          id='sourceText'
+          value={sourceText}
+          onChange={(event) => setSourceText(event.target.value)}
         ></textarea>
-        <label htmlFor='plainText'>Plain Text</label>
+        <label htmlFor='sourceText'>Source Text</label>
       </div>
       <div style={{ textAlign: 'center' }}>
         <button
-          type='submit'
-          className='btn btn-light'
+          type='button'
+          className={BUTTON_CSS_CLASS}
           onClick={encodeToBase64}
         >
-          Encode ⬇
-        </button>{' '}
+          Encode
+        </button>
+        {'\u00A0\u00A0⬇\u00A0\u00A0'}
         <button
-          type='submit'
-          className='btn btn-light'
+          type='button'
+          className={BUTTON_CSS_CLASS}
           onClick={decodeFromBase64}
         >
-          Decode ⬆
+          Decode
         </button>
       </div>
       <div className='form-floating'>
@@ -139,36 +141,27 @@ export default function Base64EncodeDecoder() {
           className='form-control'
           placeholder='Leave a comment here'
           style={{ height: '200px' }}
-          id='base64Text'
-          value={base64Text}
-          onChange={(event) => setBase64Text(event.target.value)}
+          id='targetText'
+          value={targetText}
+          disabled='true'
         ></textarea>
-        <label htmlFor='base64Text'>Encoded Base64 Text</label>
+        <label htmlFor='targetText'>Result goes here...</label>
       </div>
       <div className='row justify-content-between'>
         <div className='col-auto'>
           <button
-            type='submit'
-            className='btn btn-light'
-            onClick={() => copyValue(base64Text)}
+            type='button'
+            className={BUTTON_CSS_CLASS}
+            onClick={() => copyValue(targetText)}
           >
             📄 Copy
-          </button>{' '}
-          {isPasteSupported && (
-            <button
-              type='submit'
-              className='btn btn-light'
-              onClick={() => pasteValue(setBase64Text)}
-            >
-              📝 Paste
-            </button>
-          )}
+          </button>
         </div>
         <div className='col-auto'>
           <button
-            type='submit'
-            className='btn btn-light'
-            onClick={() => clearValue(setBase64Text)}
+            type='button'
+            className={BUTTON_CSS_CLASS}
+            onClick={() => clearValue(setTargetText)}
           >
             🗑 Clear
           </button>

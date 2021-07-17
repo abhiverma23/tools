@@ -18,4 +18,4 @@ ErrorDocument 503 http://vabhishek.com/error?err=503&landTo=tools
 </IfModule>
 
 
-#redirectMatch 301 ^(.*)$ http://tools.vabhishek.com
+#redirectMatch 301 ^(.*)$ https://tools.vabhishek.com
