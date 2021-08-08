@@ -19,7 +19,8 @@ export default function Base64EncodeDecoder() {
     [targetText, setTargetText] = useState(''),
     [showAlert, setShowAlert] = useState(false),
     [alertMessage, setAlertMessage] = useState('Alert Message Goes Here....'),
-    [isPasteSupported, setPasteSupported] = useState(false);
+    [isPasteSupported, setPasteSupported] = useState(false),
+    [currentTimeout, setCurrentTimeout] = useState(null);
 
   const encodeToBase64 = () => {
     setTargetText(btoa(sourceText));
@@ -44,9 +45,12 @@ export default function Base64EncodeDecoder() {
     setAlertMessage(msg);
     setShowAlert(true);
 
-    setTimeout(() => {
-      setShowAlert(false);
-    }, 5000);
+    if (currentTimeout != null) clearTimeout(currentTimeout);
+    setCurrentTimeout(
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 5000)
+    );
   };
 
   const pasteValue = (setter) => {

@@ -17,7 +17,8 @@ function PasswordGenerator() {
     [password, setPassword] = useState(
       'Password will be shown here..... Click here to copy.....'
     ),
-    [showAlert, setShowAlert] = useState(false);
+    [showAlert, setShowAlert] = useState(false),
+    [currentTimeout, setCurrentTimeout] = useState(null);
 
   const generatePassword = (event) => {
     event.preventDefault();
@@ -55,9 +56,12 @@ function PasswordGenerator() {
     navigator.clipboard.writeText(password);
     setShowAlert(true);
 
-    setTimeout(() => {
-      closeAlertWindow();
-    }, 5000);
+    if (currentTimeout != null) clearTimeout(currentTimeout);
+    setCurrentTimeout(
+      setTimeout(() => {
+        closeAlertWindow();
+      }, 5000)
+    );
   };
 
   const closeAlertWindow = () => {

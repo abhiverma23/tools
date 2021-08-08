@@ -7,6 +7,10 @@ function Home() {
       <br />
       <h2>Updates and new releases</h2>
       <div className='row row-cols-1 row-cols-md-3 g-4'>
+        <RoadMapCard title='🎼 Tuned alert box a bit' date='20 July 2021'>
+          The alert box will now close after 5 seconds no matter what actions
+          raised alerts previously within the last 5 seconds.
+        </RoadMapCard>
         <RoadMapCard
           title='💇🏻‍♂️ Changed to make Base64 E/D easy'
           date='12 July 2021'

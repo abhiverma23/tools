@@ -32,7 +32,9 @@ function NavBar() {
           <ul className='navbar-nav ms-auto mb-2 mb-lg-0'>
             <NavLink path='/' name='Home' />
             <NavLink path='/passoword-generator' name='Password Generator' />
-            <NavLink path='/base64' name='Base64 Encode/Decode' />
+            <DropDown name='Encoder/Decoder' path='/encoder-decoder'>
+              <DropDownLink path='/base64' name='Base64 Encode and Decode' />
+            </DropDown>
             <NavLink path='/about' name='About' />
           </ul>
         </div>
@@ -51,6 +53,39 @@ function NavLink({ path, name }) {
         aria-current='page'
         to={path}
       >
+        {name}
+      </Link>
+    </li>
+  );
+}
+
+function DropDown(props) {
+  const { name = 'Drop Down', path = '', children = '-NA-' } = props;
+  return (
+    <li class='nav-item dropdown'>
+      <a
+        className='nav-link dropdown-toggle'
+        href='#'
+        id='encoderDecoder'
+        role='button'
+        data-bs-toggle='dropdown'
+        aria-expanded='false'
+      >
+        {name}
+      </a>
+      <ul className='dropdown-menu' aria-labelledby='encoderDecoder'>
+        {children}
+      </ul>
+    </li>
+  );
+}
+
+function DropDownLink({ path, name }) {
+  const location = useLocation();
+
+  return (
+    <li>
+      <Link className='dropdown-item' to={path}>
         {name}
       </Link>
     </li>
