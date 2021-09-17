@@ -17,9 +17,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "postbuild": "node ftp.js",
     "prod-deploy": "node ftp-prod.js",
-    "stg-deploy": "node ftp.js"
+    "stg-deploy": "node ftp-stage.js"
   },
   "eslintConfig": {
     "extends": [
