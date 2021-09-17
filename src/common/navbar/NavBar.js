@@ -60,12 +60,12 @@ function NavLink({ path, name }) {
 }
 
 function DropDown(props) {
-  const { name = 'Drop Down', path = '', children = '-NA-' } = props;
+  const { name = 'Drop Down', /*path = '',*/ children = '-NA-' } = props;
   return (
-    <li class='nav-item dropdown'>
+    <li className='nav-item dropdown'>
       <a
         className='nav-link dropdown-toggle'
-        href='#'
+        href='#EncodersDecoders'
         id='encoderDecoder'
         role='button'
         data-bs-toggle='dropdown'
@@ -81,7 +81,8 @@ function DropDown(props) {
 }
 
 function DropDownLink({ path, name }) {
-  const location = useLocation();
+  // To identify which page is active
+  /*const location = useLocation();*/
 
   return (
     <li>
