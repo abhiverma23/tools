@@ -4,13 +4,13 @@ export default function Base64EncodeDecoder() {
   const SHOW_ALERT_CLASSNAME = 'show',
     HIDE_ALERT_CLASSNAME = 'hide',
     PASTE_ERR_MSG = 'Got error while pasting value.',
-    PASTE_SUC_MSG = 'Pasted clipboard content.',
+    /*PASTE_SUC_MSG = 'Pasted clipboard content.',*/
     PASTE_NOT_SUPPORTED_MSG =
       'Pasting from clipboard is not supported in your browser',
     COPY_SUC_MSG = 'Content is copied to clipboard.',
     COPY_NOT_SUPPORTED_MSG =
       'Cpoiying content from clipboard is not supported in your browser',
-    CLEAR_SUC_MSG = 'Cleared content in text box.',
+    /*CLEAR_SUC_MSG = 'Cleared content in text box.',*/
     DECODE_SUC_MSG = 'Decoded Base64 to plain text.',
     ENCODE_SUC_MSG = 'Encoded plain text to base64',
     BUTTON_CSS_CLASS = 'btn btn-outline-secondary';
@@ -147,7 +147,7 @@ export default function Base64EncodeDecoder() {
           style={{ height: '200px' }}
           id='targetText'
           value={targetText}
-          disabled='true'
+          disabled={true}
         ></textarea>
         <label htmlFor='targetText'>Result goes here...</label>
       </div>
